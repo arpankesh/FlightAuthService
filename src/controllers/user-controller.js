@@ -36,11 +36,11 @@ const signIn = async (req, res) => {
         });
     } catch (error) {
         console.log(error);
-        return res.status(500).json({
-            message: "Cannot sign in the user",
+        return res.status(error.statusCode).json({
+            message: error.message,
             success: false,
             data: {},
-            err: error
+            err: error.explanation
         })
     }
 }
